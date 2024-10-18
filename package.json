@@ -1,11 +1,15 @@
 {
   "name": "u-belong",
   "version": "1.0.0",
+  "description": "Interactive map of BYU-Idaho with event highlights",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "dependencies": {
+    "express": "^4.21.1",
+    "leaflet": "^1.9.4"
+  }
 }
