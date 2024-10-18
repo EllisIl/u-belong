@@ -1,0 +1,12 @@
+[
+    {
+        "buildingId": "ricks",
+        "name": "Math Seminar",
+        "time": "10:00 AM - 12:00 PM"
+    },
+    {
+        "buildingId": "smith",
+        "name": "Career Fair",
+        "time": "2:00 PM - 5:00 PM"
+    }
+]
