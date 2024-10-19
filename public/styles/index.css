@@ -30,6 +30,9 @@ body header .links {
   background-color: var(--french_gray);
   display: none;
 }
+body header .links .links.open {
+  display: block;
+}
 body header .links a {
   color: var(--black_olive);
 }

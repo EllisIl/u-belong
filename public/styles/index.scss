@@ -29,6 +29,9 @@ body{
             padding-bottom: 20px;
             background-color: var(--french_gray);
             display: none;
+            .links.open{
+                display: block;
+            }
             a{
                 color: var(--black_olive);
             }
