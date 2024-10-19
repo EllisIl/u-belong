@@ -15,23 +15,28 @@ body h1 {
   color: var(--french_gray);
   text-align: center;
 }
-body a:hover {
-  color: var(--moodlight_gray);
-}
 body header p {
   color: var(--white);
   text-align: center;
 }
 body header .links {
   display: none; /* Initially hide the links */
-  justify-content: space-around;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background-color: var(--french_gray);
 }
 body header .links.open {
   display: flex; /* Change to flex to match your layout */
   flex-direction: column;
+  align-items: center;
+  background-color: var(--french_gray);
+}
+body header .links a {
+  color: var(--black_olive);
+  padding: 10px; /* Add padding to increase the clickable area */
+  text-align: center; /* Center text */
+  display: block; /* Make the anchor a block element */
+  width: 100%;
+}
+body header .links a:hover {
+  background-color: var(--moodlight_gray); /* Change background on hover */
 }
 body footer p, body footer a {
   color: var(--white);
@@ -46,6 +51,7 @@ body footer p, body footer a {
   align-items: center;
   justify-content: center;
   background-color: var(--midnight_green); /* Added background color */
+  margin-bottom: 10px;
 }
 
 #eye::before {
@@ -143,10 +149,12 @@ body footer p, body footer a {
 /* Desktop view */
 @media (min-width: 768px) {
   header button {
-    display: none;
+    display: none !important;
   }
-  header div.links {
-    display: flex;
+  header .links {
+    display: flex !important;
+    flex-direction: row;
+    background-color: var(--french_gray);
   }
 }
 a.leaflet-control-zoom-in,
