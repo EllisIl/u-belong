@@ -1,3 +1,19 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+header h1 {
+  color: pink;
+}
+
+body {
+  background-color: lightblue;
+}
+
 .custom-marker .marker-icon {
   width: 30px;
   height: 30px;
@@ -12,4 +28,62 @@
 
 .custom-marker .marker-icon:hover {
   background-color: #1F271B;
+}
+
+#map {
+  height: 600px;
+  width: 100%;
+  flex-grow: 1;
+}
+
+/* Sidebar styles */
+#sidebar {
+  width: 300px;
+  height: 100%;
+  overflow-y: auto;
+  padding: 10px;
+  border-right: 2px solid #ccc;
+  background-color: #f9f9f9;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+}
+
+.event-item {
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  transition: background-color 0.2s;
+}
+
+.event-item:hover {
+  background-color: #e0e0e0;
+  cursor: pointer;
+}
+
+.highlight {
+  background-color: yellow;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  #sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 2px solid #ccc;
+  }
+  #map {
+    height: 400px;
+  }
+}
+/* Flex container for sidebar and map */
+.container {
+  display: flex;
+  width: 100%;
+  height: 100vh; /* Full height */
 }/*# sourceMappingURL=index.css.map */

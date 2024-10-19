@@ -52,13 +52,8 @@ const buildings = [
 async function fetchEvents() {
     const response = await fetch('events.json');
     const events = await response.json();
-    console.log(events);
-    events.forEach(element => {
-        if (!element.listingSeparator){
-            console.log(element.p3);
-        }
-    });
-    highlightBuildings(events);
+    return events;
+    
 }
 
 // Function to highlight buildings based on event data
@@ -100,6 +95,34 @@ function highlightBuildings(events) {
         }
     });
 }
+// Function to populate sidebar with events from events.json
+async function populateSidebar() {
+    try {
+         // Fetch the events JSON
+        const events = await fetchEvents(); // Parse the JSON response
+        console.log(events);
+        const sidebar = document.getElementById('sidebar');
 
+        events.forEach(event => {
+            const eventItem = document.createElement('div');
+            eventItem.classList.add('event-item');
+            eventItem.innerHTML = `
+                <img class="eventImg" src="${event.image}" alt="${event.name}">
+                <h3>${event.name}</h3>
+                <p>${event.date}</p>
+                <p>${event.category}</p>
+                <p>${event.location}</p>
+                <p>${event.rsvp}</p>
+                <p>${event.info}</p>
+                `;
+            sidebar.appendChild(eventItem); // Add the event item to the sidebar
+        });
+    } catch (error) {
+        console.error('Error fetching events:', error);
+    }
+}
+
+// Call the function to populate the sidebar
+populateSidebar();
 // Call fetchEvents to highlight buildings when the page loads
 fetchEvents();
