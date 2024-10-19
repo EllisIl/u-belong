@@ -5,16 +5,19 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "predeploy": "npm run build",
-  "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@netlify/functions": "^2.8.2",
+    "@types/express": "^5.0.0",
     "axios": "^1.7.7",
     "express": "^4.21.1",
     "leaflet": "^1.9.4",
-    "sass": "^1.80.3"
+    "sass": "^1.80.3",
+    "serverless": "^4.4.6",
+    "serverless-http": "^3.2.0"
   },
   "homepage": "https://github.com/EllisIl/u-belong",
   "devDependencies": {
