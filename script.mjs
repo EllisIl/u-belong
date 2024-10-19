@@ -14,6 +14,7 @@ async function fetchData(file) {
 }
 
 let activePolygon = null; // Track the currently active building
+let events = [];
 
 // Function to highlight buildings based on event data
 async function highlightBuildings() {
@@ -44,8 +45,9 @@ async function highlightBuildings() {
 
         // Add "View More" button if there are more than 3 events
         const viewMoreButton = buildingEvents.length > 3 
-            ? `<button onclick="showAllEvents('${building.id}')">View More</button>` 
-            : '';
+    ? `<button onclick="showAllEvents('${building.id}')">View More</button>` 
+    : '';
+
 
         // Track popup state
         let popupOpen = false;
@@ -114,15 +116,24 @@ async function highlightBuildings() {
 
 function showAllEvents(buildingId) {
     const buildingEvents = events.filter(event => event.building === buildingId);
+    
+    // Check if events are available for this building
+    if (buildingEvents.length === 0) {
+        alert("No events available for this building.");
+        return;
+    }
+
+    // Prepare all event details
     const allEventDetails = buildingEvents.map(event => `
         <strong>${event.name}</strong><br>
         Time: ${new Date(event.date).toLocaleString()}<br>
         <a href="https://ibelong.byui.edu${event.rsvp}" target="_blank">RSVP</a>
     `).join('<hr>');
 
-    // Assuming there's a global reference to the popup
+    // Update the popup content to show all events
     popup.setContent(`${building.name}<br>${allEventDetails}`);
 }
+
 
 async function populateSidebar(filterCriteria) {
 
