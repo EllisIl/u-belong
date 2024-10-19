@@ -33,4 +33,5 @@ body header div a {
 }
 body footer p, body footer a {
   color: var(--white);
+  margin: 5px;
 }/*# sourceMappingURL=index.css.map */
