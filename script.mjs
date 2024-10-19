@@ -1,6 +1,32 @@
 // Initialize the map and set the view to BYU-Idaho's coordinates
 const map = L.map('map', { scrollWheelZoom: false }).setView([43.8186, -111.7836], 16);
 
+// Hamburger menu functionality using the eye button
+let eye = document.getElementById("eye");
+let links = document.querySelector(".links");
+let sidebar = document.getElementById("sidebar");
+
+// Ensure the eye starts closed
+eye.classList.add('closed');
+links.classList.remove("open"); // Ensure the links are hidden initially
+sidebar.classList.remove("open"); // Ensure the sidebar is hidden initially
+
+// Toggle the eye opening/closing and the menu list visibility
+eye.addEventListener('click', () => {
+    // Toggle the eye open/close animation
+    if (eye.classList.contains('open')) {
+        eye.classList.remove('open');
+        eye.classList.add('closed');
+        links.classList.remove("open"); // Hide the menu when closing the eye
+        sidebar.classList.remove("open"); // Hide the sidebar when closing the eye
+    } else {
+        eye.classList.remove('closed');
+        eye.classList.add('open');
+        links.classList.add("open"); // Show the menu when opening the eye
+        sidebar.classList.add("open"); // Show the sidebar when opening the eye
+    }
+});
+
 // Add a tile layer (Map data from OpenStreetMap)
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors'
@@ -9,6 +35,10 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 // Fetch event data from a JSON file and highlight relevant buildings
 async function fetchData(file) {
     const response = await fetch(file);
+
+    if (!response.ok) {
+        throw new Error(`Failed to load ${file}`);
+    }
     const data = await response.json();
     return data;
 }
@@ -17,6 +47,11 @@ let activePolygon = null; // Track the currently active building
 let events = [];
 let buildings = [];
 let popup;
+
+export function handleSearch() {
+    const filterCriteria = document.getElementById('searchInput').value;
+    populateSidebar(filterCriteria);
+}
 
 // Function to highlight buildings based on event data
 async function highlightBuildings() {
@@ -92,6 +127,7 @@ function showPopup(polygon, latlng) {
     // Prepare the popup content, limiting to the first three events
     const limitedEvents = buildingEvents.slice(0, 3);
     const eventDetails = getEventDetailsHTML(limitedEvents);
+
 
     // Add "View More" button if there are more than 3 events
     const viewMoreButton = buildingEvents.length > 3 
