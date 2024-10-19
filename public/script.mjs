@@ -93,19 +93,18 @@ async function populateSidebar() {
     try {
          // Fetch the events JSON
         const events = await fetchEvents(); // Parse the JSON response
-        console.log(events);
         const sidebar = document.getElementById('sidebar');
 
         events.forEach(event => {
             const eventItem = document.createElement('div');
             eventItem.classList.add('event-item');
             eventItem.innerHTML = `
-                <img class="eventImg" src="${event.image}" alt="${event.name}">
+                <img class="event-image" src="${event.image}" alt="${event.name}">
                 <h3>${event.name}</h3>
                 <p>${event.date}</p>
                 <p>${event.category}</p>
                 <p>${event.location}</p>
-                <p>${event.rsvp}</p>
+                <a href="https://ibelong.byui.edu${event.rsvp}" target="_blank">RSVP</p></a>
                 <p>${event.info}</p>
                 `;
             sidebar.appendChild(eventItem); // Add the event item to the sidebar
