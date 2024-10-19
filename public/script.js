@@ -210,3 +210,4 @@ function highlightBuildings(events) {
 
 // Call fetchEvents to highlight buildings when the page loads
 fetchEvents();
+
