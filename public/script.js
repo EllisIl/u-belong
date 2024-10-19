@@ -10,7 +10,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 
 const buildings = [
-    { name: "Ricks", coordinates: [
+   { name: "Ricks", coordinates: [
         [43.8149, -111.7818],
         [43.8146, -111.7818],
         [43.8146, -111.7807],
