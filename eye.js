@@ -1,4 +1,4 @@
-// Hamburger menu functionality using the eye button
+// Hamburger menu functionality using the eye button 
 let eye = document.getElementById("eye");
 let links = document.querySelector(".links");
 let sidebar = document.getElementById("sidebar");
@@ -16,10 +16,12 @@ eye.addEventListener('click', () => {
         eye.classList.add('closed');
         links.classList.remove("open"); // Hide the menu when closing the eye
         sidebar.classList.remove("open"); // Hide the sidebar when closing the eye
+        sidebar.style.display = "none"; // Ensure the sidebar is hidden
     } else {
         eye.classList.remove('closed');
         eye.classList.add('open');
         links.classList.add("open"); // Show the menu when opening the eye
         sidebar.classList.add("open"); // Show the sidebar when opening the eye
+        sidebar.style.display = "flex"; // Show the sidebar
     }
 });
