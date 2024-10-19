@@ -95,6 +95,7 @@ async function populateSidebar() {
     }
 }
 
+
 // Helper function to check if an event is happening today
 function isEventToday(eventDate) {
     const today = new Date();
