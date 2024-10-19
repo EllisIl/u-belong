@@ -6,6 +6,8 @@
     --french_gray: #D2D7Df;
     --white: #FFFFFF;
 }
+
+/* Mobile view */
 body{
     background-color: var(--midnight_green);
     h1{
@@ -20,12 +22,13 @@ body{
             color: var(--white);
             text-align: center;
         }
-        div{
-            display: flex;
-            justify-content: space-around;
-            padding-top: 20px;
-            padding-bottom: 20px;
-            background-color: var(--french_gray);
+        .links{
+            display: none;
+            // display: flex;
+            // justify-content: space-around;
+            // padding-top: 20px;
+            // padding-bottom: 20px;
+            // background-color: var(--french_gray);
             a{
                 color: var(--black_olive);
             }
@@ -39,6 +42,19 @@ body{
         }
     }
 }
+
+/* Desktop view */
+@media(min-width:700px){
+    header{
+        button{
+            display: none;
+        }
+        .links{
+            display: block;
+        }
+    }
+}
+
 
 
 a.leaflet-control-zoom-in, a.leaflet-control-zoom-out{
@@ -107,6 +123,7 @@ a.leaflet-control-zoom-in, a.leaflet-control-zoom-out{
     body {
         flex-direction: column;
         align-items: stretch;
+
     }
 
     #sidebar {

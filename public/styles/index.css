@@ -7,6 +7,7 @@
   --white: #FFFFFF;
 }
 
+/* Mobile view */
 body {
   background-color: var(--midnight_green);
 }
@@ -21,14 +22,10 @@ body header p {
   color: var(--white);
   text-align: center;
 }
-body header div {
-  display: flex;
-  justify-content: space-around;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background-color: var(--french_gray);
+body header .links {
+  display: none;
 }
-body header div a {
+body header .links a {
   color: var(--black_olive);
 }
 body footer p, body footer a {
@@ -36,6 +33,15 @@ body footer p, body footer a {
   margin: 5px;
 }
 
+/* Desktop view */
+@media (min-width: 700px) {
+  header button {
+    display: none;
+  }
+  header .links {
+    display: block;
+  }
+}
 a.leaflet-control-zoom-in, a.leaflet-control-zoom-out {
   background-color: var(--midnight_green);
 }
