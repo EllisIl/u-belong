@@ -33,4 +33,14 @@ body header div a {
 }
 body footer p, body footer a {
   color: var(--white);
+}
+
+a.leaflet-control-zoom-in, a.leaflet-control-zoom-out {
+  background-color: var(--midnight_green);
+}
+
+/* Change the text color for the zoom buttons */
+.leaflet-control-zoom-in span,
+.leaflet-control-zoom-out span {
+  color: white; /* Text color for + and - */
 }/*# sourceMappingURL=index.css.map */
