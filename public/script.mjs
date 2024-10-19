@@ -68,6 +68,7 @@ async function highlightBuildings() {
         }
     });
 }
+
 // Function to populate sidebar with events from events.json
 async function populateSidebar() {
     try {
@@ -93,6 +94,7 @@ async function populateSidebar() {
         console.error('Error fetching events:', error);
     }
 }
+
 
 // Helper function to check if an event is happening today
 function isEventToday(eventDate) {
