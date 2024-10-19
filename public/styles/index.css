@@ -34,6 +34,7 @@ body header .links a {
   text-align: center; /* Center text */
   display: block; /* Make the anchor a block element */
   width: 100%;
+  text-decoration: none;
 }
 body header .links a:hover {
   background-color: var(--moodlight_gray); /* Change background on hover */
@@ -153,7 +154,7 @@ body footer p, body footer a {
   }
   header .links {
     display: flex !important;
-    flex-direction: row;
+    flex-direction: row !important;
     background-color: var(--french_gray);
   }
 }
