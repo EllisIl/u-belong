@@ -6,7 +6,9 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
 
-// Sample building coordinates for BYU-Idaho campus (you'll want to refine this with actual data)
+// Sample building polygon coordinates (replace these with actual building outlines)
+
+
 const buildings = [
     { name: "Ricks", coordinates: [43.8181, -111.7821], id: "ricks" },
     { name: "Smith", coordinates: [43.8191, -111.7814], id: "smith" },
@@ -57,11 +59,38 @@ async function fetchEvents() {
 function highlightBuildings(events) {
     buildings.forEach(building => {
         const event = events.find(event => event.buildingId === building.id);
-        const marker = L.marker(building.coordinates).addTo(map).bindPopup(building.name);
-        
+
+        // Draw a polygon around the building's outline coordinates
+        const polygon = L.polygon(building.coordinates, {
+            color: '#d2d7df',   // Base border color
+            fillColor: '#d2d7df',  // Base fill color
+            fillOpacity: 0.5,  // Adjust the opacity
+            weight: 2          // Border thickness
+        }).addTo(map).bindPopup(building.name);
+
+        // Change color on hover
+        polygon.on('mouseover', () => {
+            polygon.setStyle({
+                color: '#1F271B',   // Hover border color
+                fillColor: '#1F271B'  // Hover fill color
+            });
+        });
+
+        // Revert to original color when mouse leaves
+        polygon.on('mouseout', () => {
+            polygon.setStyle({
+                color: '#d2d7df',
+                fillColor: '#d2d7df'
+            });
+        });
+
+        // Highlight the building if it has an event
         if (event) {
-            marker.getElement().classList.add('highlight'); // Highlight building
-            marker.bindPopup(`<strong>${building.name}</strong><br>Event: ${event.name}<br>Time: ${event.time}`);
+            polygon.setStyle({
+                color: '#1F271B',   // Event highlight border color
+                fillColor: '#1F271B'  // Event highlight fill color
+            });
+            polygon.bindPopup(`<strong>${building.name}</strong><br>Event: ${event.name}<br>Time: ${event.time}`);
         }
     });
 }
