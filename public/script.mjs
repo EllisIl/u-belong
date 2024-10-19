@@ -29,46 +29,74 @@ async function highlightBuildings() {
             fillOpacity: 0.35,
             weight: 2
         };
-        
+
+        // Set polygon style based on events
         if (buildingEvents.length > 0) {
-            buildingEvents.forEach(event => {
-                const eventDate = new Date(event.date);
-                
-                if (isEventToday(eventDate)) {
-                    // Event happening today
-                    polygonStyle = {
-                        color: '#0E541A',   // Green border
-                        fillColor: '#0E541A',  // Green fill
-                        fillOpacity: 0.8,
-                        weight: 2
-                    };
-                } else if (isEventThisWeek(eventDate)) {
-                    // Event happening this week
-                    polygonStyle = {
-                        color: '#0C3872',   // Blue border
-                        fillColor: '#0C3872',  // Blue fill
-                        fillOpacity: 0.35,
-                        weight: 2
-                    };
-                }
-            });
+            polygonStyle.fillColor = '#1F271B'; // Default color for buildings with events
+        } else {
+            polygonStyle.fillColor = '#4A4A4A'; // Darker gray for buildings without events
         }
 
         // Draw the polygon with the appropriate style
-        const polygon = L.polygon(building.coordinates, polygonStyle).addTo(map).bindPopup(building.name);
-
-        // If any events are associated with the building, show event details in the popup
-        if (buildingEvents.length > 0) {
-            const eventDetails = buildingEvents.map(event => `
+        const polygon = L.polygon(building.coordinates, polygonStyle).addTo(map);
+        
+        // Prepare the popup content, limiting to the first three events
+        const limitedEvents = buildingEvents.slice(0, 3); // Get only the first three events
+        const eventDetails = limitedEvents.length > 0
+            ? limitedEvents.map(event => `
                 <strong>${event.name}</strong><br>
                 Time: ${new Date(event.date).toLocaleString()}<br>
                 <a href="https://ibelong.byui.edu${event.rsvp}" target="_blank">RSVP</a>
-            `).join('<hr>');
+            `).join('<hr>')
+            : "No events available";
 
-            polygon.bindPopup(`${building.name}<br>${eventDetails}`);
-        }
+        // Track popup state
+        let popupOpen = false;
+        let popup; // Variable to hold the popup reference
+
+        // Add mouseover and mouseout event listeners for hover effect
+        polygon.on('mouseover', function(e) {
+            // Set the popup position without shifting the map
+            if (!popupOpen) {
+                popup = L.popup()
+                    .setLatLng(e.latlng) // Use the latitude and longitude of the polygon
+                    .setContent(`${building.name}<br>${eventDetails}`)
+                    .openOn(map);
+            }
+            this.setStyle({
+                fillColor: buildingEvents.length > 0 ? '#0E541A' : '#3C3C3C', // Green if has events, darker gray if not
+                fillOpacity: 0.8
+            });
+        });
+
+        polygon.on('mouseout', function() {
+            if (!popupOpen) { // Only close if the popup is not open
+                this.setStyle(polygonStyle); // Reset to original style
+                if (popup) {
+                    map.closePopup(popup); // Close the popup
+                }
+            }
+        });
+
+        // Add click event listener
+        polygon.on('click', function() {
+            if (popupOpen) {
+                map.closePopup(popup); // Close the popup if it is already open
+            } else {
+                popup = L.popup()
+                    .setLatLng(this.getBounds().getCenter()) // Position the popup at the center of the polygon
+                    .setContent(`${building.name}<br>${eventDetails}`)
+                    .openOn(map);
+            }
+            popupOpen = !popupOpen; // Toggle the popup state
+        });
     });
 }
+
+
+
+
+
 
 // Function to populate sidebar with events from events.json
 async function populateSidebar() {
