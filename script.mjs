@@ -44,6 +44,11 @@ async function fetchData(file) {
 
 let activePolygon = null; // Track the currently active building
 
+export function handleSearch() {
+    const filterCriteria = document.getElementById('searchInput').value;
+    populateSidebar(filterCriteria);
+}
+
 // Function to highlight buildings based on event data
 async function highlightBuildings() {
     try {
@@ -77,7 +82,7 @@ async function highlightBuildings() {
 
             // Add "View More" button if there are more than 3 events
             const viewMoreButton = buildingEvents.length > 3 
-                ? `<button onclick="showAllEvents('${building.id}')">View More</button>` 
+                ? `<button id='viewMore">View More</button>` 
                 : '';
 
             // Track popup state
@@ -148,7 +153,7 @@ async function highlightBuildings() {
     }
 }
 
-async function showAllEvents(buildingId) {
+export async function showAllEvents(buildingId) {
     try {
         const events = await fetchData('events.json');
         const buildings = await fetchData('buildings.json');
@@ -232,8 +237,6 @@ async function populateSidebar(filterCriteria) {
         console.error('Error populating sidebar:', error);
     }
 }
-
-
 async function focusBuilding(buildingId) {
     const buildings = await fetchData('buildings.json');
     
@@ -256,7 +259,6 @@ async function focusBuilding(buildingId) {
         alert("This is an online event or the location is unavailable.");
     }
 }
-
 // Function to calculate the centroid of a polygon
 function getPolygonCentroid(coords) {
     let x = 0, y = 0, n = coords.length;
@@ -266,9 +268,6 @@ function getPolygonCentroid(coords) {
     });
     return [x / n, y / n];  // Return the average lat/lng
 }
-
-
-
 // Function to convert string dates to Date objects
 function convertDates(events) {
     return events.map(event => ({
