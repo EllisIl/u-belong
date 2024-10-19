@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <link rel="stylesheet" href="/styles/index.css" media="screen" />
+<<<<<<< HEAD
+    <script src="eye.js" defer></script>
+=======
     <link rel="icon" href="./images/eye2_64x64.webp">
+>>>>>>> 009b67800fb84ddfdd0e5b4fa72d8a949632bae3
   </head>
   <body>
     <!-- Header -->
@@ -34,20 +38,23 @@
     <!-- Container for Sidebar and Map -->
     <div class="container">
         <div id="sidebar">
-            <input
-                type="text"
-                id="searchInput"
-                placeholder="Search activities..."
-                style="width: 100%; margin-bottom: 10px"
-            />
-            <button id="searchButton">Search</button>
+            <!-- Sidebar content will be populated here -->
+             <!-- Search input to filter activities by name -->
+              <input 
+              type="text" 
+              id="searchInput" 
+              placeholder="Search activities..." 
+              style="width: 100%; margin-bottom: 10px;" 
+              />
+
+            <button onclick="applyFilters()">Search</button>
             <div id="sidebarContent">
-                <!-- Sidebar content will be populated here -->
+              <!-- Activities will be dynamically populated here -->
             </div>
+
         </div>
         <div id="map"></div>
     </div>
-    
 
     <!-- Footer -->
     <footer>
@@ -77,13 +84,5 @@
     </footer>
     <script src="/node_modules/leaflet/dist/leaflet.js"></script>
     <script src="script.mjs" type="module"></script>
-    <script type="module">
-        import { handleSearch } from './script.mjs';
-    
-        document.addEventListener('DOMContentLoaded', () => {
-            const searchButton = document.getElementById('searchButton');
-            searchButton.addEventListener('click', handleSearch);
-        });
-    </script>
   </body>
 </html>
