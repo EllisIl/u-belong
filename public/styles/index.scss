@@ -38,3 +38,14 @@ body{
         }
     }
 }
+
+
+a.leaflet-control-zoom-in, a.leaflet-control-zoom-out{
+    background-color: var(--midnight_green);
+}
+
+/* Change the text color for the zoom buttons */
+.leaflet-control-zoom-in span,
+.leaflet-control-zoom-out span{
+    color: white; /* Text color for + and - */
+}
