@@ -1,1 +1,15 @@
-/*# sourceMappingURL=index.css.map */
+.custom-marker .marker-icon {
+  width: 30px;
+  height: 30px;
+  background-color: #d2d7df;
+  border-radius: 50%;
+  border: 2px solid #333;
+}
+
+.custom-marker.highlight .marker-icon {
+  background-color: #1F271B;
+}
+
+.custom-marker .marker-icon:hover {
+  background-color: #1F271B;
+}/*# sourceMappingURL=index.css.map */
