@@ -14,7 +14,7 @@ body{
         color: var(--french_gray);
         text-align: center;
     }
-    a:hoer{
+    a:hover{
         color: var(--moodlight_gray)
     }
     header{
@@ -22,21 +22,18 @@ body{
             color: var(--white);
             text-align: center;
         }
-        .links{
-            display: flex;
+        .links {
+            display: none; /* Initially hide the links */
             justify-content: space-around;
             padding-top: 20px;
             padding-bottom: 20px;
             background-color: var(--french_gray);
-            display: none;
-            .links.open{
-                display: block;
-            }
-            a{
-                color: var(--black_olive);
-            }
-            
         }
+        
+        .links.open {
+            display: flex; /* Change to flex to match your layout */
+            flex-direction: column; 
+        }        
     }
     footer{
         p, a{
@@ -45,6 +42,75 @@ body{
         }
     }
 }
+
+#eye {
+    margin: auto;
+    width: 86px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--midnight_green); /* Added background color */
+}
+
+#eye::before {
+    content: "";
+    background-image: url('../images/eye5_64x64.webp'); /* Default closed eye */
+    background-size: cover;
+    width: 68px;
+    height: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-image 0.5s ease-in-out; /* Smooth transition between images */
+}
+
+#eye.open::before {
+    animation: eyeOpen 1s forwards; /* Play the opening animation */
+}
+
+#eye.closed::before {
+    animation: eyeClose 1s forwards; /* Play the closing animation */
+}
+
+/* Define the eye opening animation */
+@keyframes eyeOpen {
+    0% {
+        background-image: url('../images/eye5_64x64.webp'); /* Fully closed eye */
+    }
+    25% {
+        background-image: url('../images/eye4_64x64.webp'); /* Slightly open eye */
+    }
+    50% {
+        background-image: url('../images/eye3_64x64.webp'); /* Half-open eye */
+    }
+    75% {
+        background-image: url('../images/eye2_64x64.webp'); /* Almost fully open eye */
+    }
+    100% {
+        background-image: url('../images/eye1_64x64.webp'); /* Fully open eye */
+    }
+}
+
+/* Define the eye closing animation */
+@keyframes eyeClose {
+    0% {
+        background-image: url('../images/eye1_64x64.webp'); /* Fully open eye */
+    }
+    25% {
+        background-image: url('../images/eye2_64x64.webp'); /* Almost fully open eye */
+    }
+    50% {
+        background-image: url('../images/eye3_64x64.webp'); /* Half-open eye */
+    }
+    75% {
+        background-image: url('../images/eye4_64x64.webp'); /* Almost closed eye */
+    }
+    100% {
+        background-image: url('../images/eye5_64x64.webp'); /* Fully closed eye */
+    }
+}
+
 
 /* Desktop view */
 @media(min-width:768px){
