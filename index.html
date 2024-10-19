@@ -36,14 +36,17 @@
         <div id="sidebar">
             <!-- Sidebar content will be populated here -->
              <!-- Search input to filter activities by name -->
-  <input 
-  type="text" 
-  id="searchInput" 
-  placeholder="Search activities..." 
-  style="width: 100%; margin-bottom: 10px;" 
-/>
+              <input 
+              type="text" 
+              id="searchInput" 
+              placeholder="Search activities..." 
+              style="width: 100%; margin-bottom: 10px;" 
+              />
 
-<button onclick="applyFilters()">Search</button>
+            <button onclick="applyFilters()">Search</button>
+            <div id="sidebarContent">
+              <!-- Activities will be dynamically populated here -->
+            </div>
 
         </div>
         <div id="map"></div>
