@@ -7,12 +7,56 @@ body {
 }
 
 header{
-    h1{
-        color: pink;
-    }
+/* Mobile / base view */
+:root{
+    --midnight_green: #124E66;
+    --black_olive: #1f271b;
+    --moodlight_gray: #748D92;
+    --french_gray: #D2D7Df;
+    --white: #FFFFFF;
 }
 body{
-    background-color: lightblue;
+    background-color: var(--midnight_green);
+    h1{
+        color: var(--french_gray);
+        text-align: center;
+    }
+    a:hover{
+        color: var(--moodlight_gray)
+    }
+    header{
+        p{
+            color: var(--white);
+            text-align: center;
+        }
+        div{
+            display: flex;
+            justify-content: space-around;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-color: var(--french_gray);
+            a{
+                color: var(--black_olive);
+            }
+            
+        }
+    }
+    footer{
+        p, a{
+            color: var(--white);
+        }
+    }
+}
+
+
+a.leaflet-control-zoom-in, a.leaflet-control-zoom-out{
+    background-color: var(--midnight_green);
+}
+
+/* Change the text color for the zoom buttons */
+.leaflet-control-zoom-in span,
+.leaflet-control-zoom-out span{
+    color: white; /* Text color for + and - */
 }
 
 .custom-marker .marker-icon {
