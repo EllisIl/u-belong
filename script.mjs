@@ -62,7 +62,7 @@ async function highlightBuildings() {
         const buildingEvents = events.filter(event => event.building === building.id);
         let polygonStyle = {
             color: '#1F271B',
-            fillColor: buildingEvents.length > 0 ? '#3D9B47' : '#4A4A4A',
+            fillColor: buildingEvents.length > 0 ? '#147df5' : '#4A4A4A',
             fillOpacity: 0.35,
             weight: 2
         };
@@ -83,7 +83,7 @@ function addPolygonEventListeners(polygon) {
     polygon.on('mouseover', function(e) {
         if (this !== activePolygon) {
             this.setStyle({
-                fillColor: this.events.length > 0 ? '#66B27A' : '#3C3C3C',
+                fillColor: this.events.length > 0 ? '#147df5' : '#3C3C3C',
                 fillOpacity: 0.8
             });
         }
@@ -94,7 +94,7 @@ function addPolygonEventListeners(polygon) {
     polygon.on('mouseout', function() {
         if (this !== activePolygon) {
             this.setStyle({
-                fillColor: this.events.length > 0 ? '#3D9B47' : '#4A4A4A',
+                fillColor: this.events.length > 0 ? '#147df5' : '#4A4A4A',
                 fillOpacity: 0.35
             });
         }
@@ -105,13 +105,13 @@ function addPolygonEventListeners(polygon) {
     polygon.on('click', function(e) {
         if (activePolygon && activePolygon !== this) {
             activePolygon.setStyle({
-                fillColor: activePolygon.events.length > 0 ? '#3D9B47' : '#4A4A4A',
+                fillColor: activePolygon.events.length > 0 ? '#147df5' : '#4A4A4A',
                 fillOpacity: 0.35
             });
         }
 
         this.setStyle({
-            fillColor: this.events.length > 0 ? '#1F5D3B' : '#2A2A2A',
+            fillColor: this.events.length > 0 ? '#147df5' : '#2A2A2A',
             fillOpacity: 0.8
         });
 
@@ -182,3 +182,68 @@ function getEventDetailsHTML(events) {
 
 // Call highlightBuildings when the page loads
 highlightBuildings();
+
+async function populateSidebar(filterCriteria) {
+    try {
+        const events = await fetchData('events.json');
+        const buildings = await fetchData('buildings.json');
+        const sidebarContent = document.getElementById('sidebarContent');
+
+        // Clear existing sidebar content
+        sidebarContent.innerHTML = '';
+
+        // Filter events based on the provided criteria
+        const filteredEvents = events.filter(event => {
+            return event.name.toLowerCase().includes(filterCriteria.toLowerCase());
+        });
+
+        // Populate the sidebar with the filtered events
+        filteredEvents.forEach(event => {
+            const eventItem = document.createElement('div');
+            eventItem.classList.add('event-item');
+
+            // Find the building that matches the event's building ID
+            const building = buildings.find(b => b.id === event.building);
+
+            // Format the location
+            let location = 'Off-Campus'; // Default to Off-Campus if building is not found
+            if (event.location.includes('Online')) {
+                location = 'Online';
+            } else if (building) {
+                location = building.name; // Use the building name if found
+            }
+
+            // Format the event date
+
+            const formattedDate = new Date(event.date).toLocaleString();
+            eventItem.innerHTML = `
+                <img class="event-image" src="${event.image}" alt="${event.name}">
+                <h3>${event.name}</h3>
+                <p>${formattedDate}</p>
+                <p>${event.category}</p>
+                <p>${location}</p>
+                <a href="https://ibelong.byui.edu${event.rsvp}" target="_blank">RSVP</a>
+                <p>${event.info}</p>
+            `;
+
+            // Set a data attribute for the building ID
+            eventItem.setAttribute('data-building-id', event.building);
+
+            // Add click event to focus on the building
+            eventItem.addEventListener('click', () => {
+                focusBuilding(event.building);
+            });
+
+            sidebarContent.appendChild(eventItem);
+        });
+
+        // Check if any events matched the filter
+        if (filteredEvents.length === 0) {
+            sidebarContent.innerHTML = '<p>No events match the selected criteria.</p>';
+        }
+    } catch (error) {
+        console.error('Error populating sidebar:', error);
+    }
+}
+    
+populateSidebar("");
