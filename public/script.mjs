@@ -134,3 +134,12 @@ function isEventThisWeek(eventDate) {
 // Call highlightBuildings and populateSidebar when the page loads
 highlightBuildings(); 
 populateSidebar("");
+
+const convertDates = (events) => {
+    return events.map(event => {
+      return {
+        ...event,
+        date: new Date(event.date)  // Convert the date string to a Date object
+      };
+    });
+  };
