@@ -1,59 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BYU-Idaho Interactive Map</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>U-Belong</title>
     <link rel="stylesheet" href="/node_modules/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="/styles/index.css" media="screen">
+    <link rel="stylesheet" href="/styles/index.css" media="screen" />
     <script src="eye.js" defer></script>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Header -->
     <header>
-        <h1>U-Belong</h1>
-        <p>Welcome to the BYU-Idaho campus interactive map!</p>
-
-        <button id="eye"></button>
-        <div class="links">
-            <!-- Nav  -->
-            <a href="https://www.byui.edu/" target="_blank">Official Website</a>
-            <a href="https://www.facebook.com/BYUID/" target="_blank">Facebook</a>
-            <a href="https://www.instagram.com/byuidaho/?hl=en" target="_blank">Instagram</a>
-            <a href="https://www.linkedin.com/school/byu-idaho/posts/?feedView=all" target="_blank">LinkedIn</a>
-            <a href="https://www.youtube.com/@byui" target="_blank">YouTube</a>
-        </div>
-
+      <button id="eye"></button>
+      <div class="links">
+        <!-- Nav  -->
+        <a href="https://www.byui.edu/" target="_blank">Official Website</a>
+        <a href="https://www.facebook.com/BYUID/" target="_blank">Facebook</a>
+        <a href="https://www.instagram.com/byuidaho/?hl=en" target="_blank"
+          >Instagram</a
+        >
+        <a
+          href="https://www.linkedin.com/school/byu-idaho/posts/?feedView=all"
+          target="_blank"
+          >LinkedIn</a
+        >
+        <a href="https://www.youtube.com/@byui" target="_blank">YouTube</a>
+      </div>
     </header>
-    
-    <h1>BYU-Idaho Campus Events</h1>
+
+    <h1>U-Belong</h1>
 
     <!-- Container for Sidebar and Map -->
     <div class="container">
-        <div id="sidebar">
-            <!-- Sidebar content will be populated here -->
-             <!-- Search input to filter activities by name -->
-  <input 
-  type="text" 
-  id="searchInput" 
-  placeholder="Search activities..." 
-  style="width: 100%; margin-bottom: 10px;" 
-/>
-        </div>
-        <div id="map"></div>
+      <div id="sidebar">
+        <!-- Sidebar content will be populated here -->
+        <!-- Search input to filter activities by name -->
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Search activities..."
+          style="width: 100%; margin-bottom: 10px"
+        />
+      </div>
+      <div id="map"></div>
     </div>
-
 
     <!-- Footer -->
     <footer>
-        <p class="copy">&copy; 2024 eye/u-belong (will change this once we decide on one)</p>
-        <p class="top"><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
-        <p class="top">Made with <span style="color: #ff0000;">♥︎</span> by <a href="https://github.com/jasonheiseman" target="_blank">Jason Heiseman</a></p>
-        <p class="middle">Powered by <a href="https://leafletjs.com/" target="_blank">Leaflet</a></p>
-        <p class="middle">API data provided by <a href="https://www.byui.edu/api/v1/events" target="_blank">BYU-Idaho API</a></p>
-        <p class="bottom">Map data provided by <a href="https://www.openstreetmap.org/" target="_blank">OpenStreet</a></p>
-        </footer>
+      <p class="copy">&copy; 2024 u-belong</p>
+      <p class="top">
+        <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+      </p>
+      <p class="top">
+        Made with <span style="color: #ff0000">♥︎</span> by
+        <a href="https://github.com/jasonheiseman" target="_blank"
+          >Jason Heiseman</a
+        >
+      </p>
+      <p class="middle">
+        Powered by <a href="https://leafletjs.com/" target="_blank">Leaflet</a>
+      </p>
+      <p class="middle">
+        API data provided by
+        <a href="https://www.byui.edu/api/v1/events" target="_blank"
+          >BYU-Idaho API</a
+        >
+      </p>
+      <p class="bottom">
+        Map data provided by
+        <a href="https://www.openstreetmap.org/" target="_blank">OpenStreet</a>
+      </p>
+    </footer>
     <script src="/node_modules/leaflet/dist/leaflet.js"></script>
     <script src="script.mjs" type="module"></script>
-</body>
+  </body>
 </html>
