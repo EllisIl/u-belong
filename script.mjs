@@ -13,6 +13,8 @@ async function fetchData(file) {
     return events;
 }
 
+let activePolygon = null; // Track the currently active building
+
 // Function to highlight buildings based on event data
 async function highlightBuildings() {
     let events = await fetchData('events.json');
@@ -20,35 +22,30 @@ async function highlightBuildings() {
 
     buildings.forEach(building => {
         const buildingEvents = events.filter(event => event.building === building.id);
-        let polygonStyle;
-
-        // Set default polygon style
-        polygonStyle = {
-            color: '#1F271B',   // Default dark border
-            fillColor: '#1F271B',  // Default dark fill
+        let polygonStyle = {
+            color: '#1F271B',
+            fillColor: buildingEvents.length > 0 ? '#3D9B47' : '#4A4A4A',
             fillOpacity: 0.35,
             weight: 2
         };
 
-        // Set polygon style based on events
-        if (buildingEvents.length > 0) {
-            polygonStyle.fillColor = '#1F271B'; // Default color for buildings with events
-        } else {
-            polygonStyle.fillColor = '#4A4A4A'; // Darker gray for buildings without events
-        }
-
-        // Draw the polygon with the appropriate style
         const polygon = L.polygon(building.coordinates, polygonStyle).addTo(map);
         
+        // Store the events with the polygon for later use
+        polygon.events = buildingEvents;
+
         // Prepare the popup content, limiting to the first three events
-        const limitedEvents = buildingEvents.slice(0, 3); // Get only the first three events
-        const eventDetails = limitedEvents.length > 0
-            ? limitedEvents.map(event => `
-                <strong>${event.name}</strong><br>
-                Time: ${new Date(event.date).toLocaleString()}<br>
-                <a href="https://ibelong.byui.edu${event.rsvp}" target="_blank">RSVP</a>
-            `).join('<hr>')
-            : "No events available";
+        const limitedEvents = buildingEvents.slice(0, 3);
+        const eventDetails = limitedEvents.map(event => `
+            <strong>${event.name}</strong><br>
+            Time: ${new Date(event.date).toLocaleString()}<br>
+            <a href="https://ibelong.byui.edu${event.rsvp}" target="_blank">RSVP</a>
+        `).join('<hr>') || "No events available";
+
+        // Add "View More" button if there are more than 3 events
+        const viewMoreButton = buildingEvents.length > 3 
+            ? `<button onclick="showAllEvents('${building.id}')">View More</button>` 
+            : '';
 
         // Track popup state
         let popupOpen = false;
@@ -56,54 +53,79 @@ async function highlightBuildings() {
 
         // Add mouseover and mouseout event listeners for hover effect
         polygon.on('mouseover', function(e) {
-            // Set the popup position without shifting the map
+            if (this !== activePolygon) {
+                this.setStyle({
+                    fillColor: this.events.length > 0 ? '#66B27A' : '#3C3C3C', // Lighter green/gray on hover
+                    fillOpacity: 0.8
+                });
+            }
+        
+            // Show the popup
             if (!popupOpen) {
                 popup = L.popup()
-                    .setLatLng(e.latlng) // Use the latitude and longitude of the polygon
-                    .setContent(`${building.name}<br>${eventDetails}`)
+                    .setLatLng(e.latlng)
+                    .setContent(`${building.name}<br>${eventDetails}<br>${viewMoreButton}`)
                     .openOn(map);
             }
-            this.setStyle({
-                fillColor: buildingEvents.length > 0 ? '#0E541A' : '#3C3C3C', // Green if has events, darker gray if not
-                fillOpacity: 0.8
-            });
         });
-
+        
         polygon.on('mouseout', function() {
-            if (!popupOpen) { // Only close if the popup is not open
-                this.setStyle(polygonStyle); // Reset to original style
-                if (popup) {
-                    map.closePopup(popup); // Close the popup
-                }
+            if (this !== activePolygon) {
+                this.setStyle({
+                    fillColor: this.events.length > 0 ? '#3D9B47' : '#4A4A4A', // Reset to original style if it's not active
+                    fillOpacity: 0.35
+                });
             }
         });
-
+        
         // Add click event listener
         polygon.on('click', function() {
+            // Close the currently open popup if it exists
             if (popupOpen) {
-                map.closePopup(popup); // Close the popup if it is already open
-            } else {
-                popup = L.popup()
-                    .setLatLng(this.getBounds().getCenter()) // Position the popup at the center of the polygon
-                    .setContent(`${building.name}<br>${eventDetails}`)
-                    .openOn(map);
+                map.closePopup(popup);
             }
-            popupOpen = !popupOpen; // Toggle the popup state
+        
+            // Reset the previously active building's style
+            if (activePolygon && activePolygon !== this) {
+                activePolygon.setStyle({
+                    fillColor: activePolygon.events.length > 0 ? '#3D9B47' : '#4A4A4A', // Reset to original style
+                    fillOpacity: 0.35
+                });
+            }
+        
+            // Open a new popup for the clicked building
+            popup = L.popup()
+                .setLatLng(this.getBounds().getCenter())
+                .setContent(`${building.name}<br>${eventDetails}<br>${viewMoreButton}`)
+                .openOn(map);
+            
+            // Shade the currently clicked building darker
+            this.setStyle({
+                fillColor: this.events.length > 0 ? '#1F5D3B' : '#2A2A2A', // Darker green/gray when clicked
+                fillOpacity: 0.8
+            });
+        
+            // Update the activePolygon reference
+            activePolygon = this; // Set this building as the active one
+            popupOpen = true; // Mark popup as open
         });
     });
 }
 
-<<<<<<< HEAD:public/script.mjs
+function showAllEvents(buildingId) {
+    const buildingEvents = events.filter(event => event.building === buildingId);
+    const allEventDetails = buildingEvents.map(event => `
+        <strong>${event.name}</strong><br>
+        Time: ${new Date(event.date).toLocaleString()}<br>
+        <a href="https://ibelong.byui.edu${event.rsvp}" target="_blank">RSVP</a>
+    `).join('<hr>');
 
+    // Assuming there's a global reference to the popup
+    popup.setContent(`${building.name}<br>${allEventDetails}`);
+}
 
-
-
-
-// Function to populate sidebar with events from events.json
-async function populateSidebar() {
-=======
 async function populateSidebar(filterCriteria) {
->>>>>>> 9e1d47e71d69243b37e3deadb9c62bb64382d098:script.mjs
+
     try {
         const events = await fetchData('events.json');
         const sidebarContent = document.getElementById('sidebarContent');
