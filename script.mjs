@@ -10,7 +10,7 @@ let sidebar = document.getElementById("sidebar");
 eye.classList.add('closed');
 links.classList.remove("open"); // Ensure the links are hidden initially
 sidebar.classList.remove("open"); // Ensure the sidebar is hidden initially
-
+// emergenxy comment 
 // Toggle the eye opening/closing and the menu list visibility
 eye.addEventListener('click', () => {
     // Toggle the eye open/close animation
