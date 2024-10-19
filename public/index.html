@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYU-Idaho Interactive Map</title>
     <link rel="stylesheet" href="/node_modules/leaflet/dist/leaflet.css" />
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="/styles/index.css" media="screen">
     <style>
         #map {
             height: 600px;
@@ -17,9 +17,32 @@
     </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <h1>Eye-Belong</h1>
+        <p>Welcome to the BYU-Idaho campus interactive map!</p>
+        <a href="#" target="_blank">Visit BYU-Idaho</a>
+        <a href="#" target="_blank">Visit BYU-Idaho website</a>
+        <a href="#" target="_blank">Visit BYU-Idaho Facebook</a>
+        <a href="#" target="_blank">Visit BYU-Idaho Twitter</a>
+        <a href="#" target="_blank">Visit BYU-Idaho Instagram</a>
+        <a href="#" target="_blank">Visit BYU-Idaho LinkedIn</a>
+        <a href="#" target="_blank">Visit BYU-Idaho YouTube</a>
+        <a href="#" target="_blank">Visit BYU-Idaho Email</a>
+    </header>
+    
     <h1>BYU-Idaho Campus Events</h1>
     <div id="map"></div>
 
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 eye/u-belong (will change this once we decide on one)</p>
+        <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        <p>Made with <span style="color: #ff0000;">♥︎</span> by <a href="https://github.com/jasonheiseman" target="_blank">Jason Heiseman</a></p>
+        <p>Powered by <a href="https://leafletjs.com/" target="_blank">Leaflet</a></p>
+        <p>API data provided by <a href="https://www.byui.edu/api/v1/events" target="_blank">BYU-Idaho API</a></p>
+        <p>Map data provided by <a href="https://www.openstreetmap.org/" target="_blank">OpenStreet</a></p>
+    </footer>
     <script src="/node_modules/leaflet/dist/leaflet.js"></script>
     <script src="script.mjs" type="module"></script>
 </body>
