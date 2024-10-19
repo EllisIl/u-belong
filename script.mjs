@@ -1,5 +1,31 @@
 // Initialize the map and set the view to BYU-Idaho's coordinates
 const map = L.map('map', { scrollWheelZoom: false }).setView([43.8186, -111.7836], 16);
+// Hamburger menu functionality using the eye button
+let eye = document.getElementById("eye");
+let links = document.querySelector(".links");
+let sidebar = document.getElementById("sidebar");
+
+// Ensure the eye starts closed
+eye.classList.add('closed');
+links.classList.remove("open"); // Ensure the links are hidden initially
+sidebar.classList.remove("open"); // Ensure the sidebar is hidden initially
+
+// Toggle the eye opening/closing and the menu list visibility
+eye.addEventListener('click', () => {
+    // Toggle the eye open/close animation
+    if (eye.classList.contains('open')) {
+        eye.classList.remove('open');
+        eye.classList.add('closed');
+        links.classList.remove("open"); // Hide the menu when closing the eye
+        sidebar.classList.remove("open"); // Hide the sidebar when closing the eye
+    } else {
+        eye.classList.remove('closed');
+        eye.classList.add('open');
+        links.classList.add("open"); // Show the menu when opening the eye
+        sidebar.classList.add("open"); // Show the sidebar when opening the eye
+    }
+});
+
 
 // Add a tile layer (Map data from OpenStreetMap)
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -73,6 +99,7 @@ async function highlightBuildings() {
 async function populateSidebar(filterCriteria) {
     try {
         const events = await fetchData('events.json');
+        const buildings = await fetchData('buildings.json');
         const sidebarContent = document.getElementById('sidebarContent');
         
         // Clear existing sidebar content
@@ -87,15 +114,28 @@ async function populateSidebar(filterCriteria) {
         filteredEvents.forEach(event => {
             const eventItem = document.createElement('div');
             eventItem.classList.add('event-item');
+
+            // Find the building that matches the event's building ID
+            const building = buildings.find(b => b.id === event.building);
+
             eventItem.innerHTML = `
                 <img class="event-image" src="${event.image}" alt="${event.name}">
                 <h3>${event.name}</h3>
                 <p>${new Date(event.date).toLocaleString()}</p>
                 <p>${event.category}</p>
-                <p>${event.location}</p>
+                <p>${building ? building.name : 'Unknown Location'}</p>
                 <a href="https://ibelong.byui.edu${event.rsvp}" target="_blank">RSVP</a>
                 <p>${event.info}</p>
             `;
+
+            // Set a data attribute for the building ID
+            eventItem.setAttribute('data-building-id', event.building);
+
+            // Add click event to focus on the building
+            eventItem.addEventListener('click', () => {
+                focusBuilding(event.building);
+            });
+
             sidebarContent.appendChild(eventItem);
         });
 
@@ -107,6 +147,25 @@ async function populateSidebar(filterCriteria) {
         console.error('Error fetching events:', error);
     }
 }
+
+// Function to focus the map on a building's coordinates
+async function focusBuilding(buildingId) {
+    const buildings = await fetchData('buildings.json');
+    
+    // Find the building by its ID
+    const building = buildings.find(b => b.id === buildingId);
+    
+    if (building) {
+        // Focus the map on the building's coordinates
+        map.setView(building.coordinates, 18);  // Adjust zoom level as needed
+    } else {
+        console.error('Building not found:', buildingId);
+    }
+}
+
+// Call highlightBuildings and populateSidebar when the page loads
+highlightBuildings(); 
+populateSidebar("");
 
 export function handleSearch() {
     const filterCriteria = document.getElementById('searchInput').value;
