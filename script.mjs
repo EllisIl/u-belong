@@ -93,6 +93,7 @@ async function highlightBuildings() {
     });
 }
 
+<<<<<<< HEAD:public/script.mjs
 
 
 
@@ -100,11 +101,23 @@ async function highlightBuildings() {
 
 // Function to populate sidebar with events from events.json
 async function populateSidebar() {
+=======
+async function populateSidebar(filterCriteria) {
+>>>>>>> 9e1d47e71d69243b37e3deadb9c62bb64382d098:script.mjs
     try {
         const events = await fetchData('events.json');
-        const sidebar = document.getElementById('sidebar');
+        const sidebarContent = document.getElementById('sidebarContent');
+        
+        // Clear existing sidebar content
+        sidebarContent.innerHTML = '';
 
-        events.forEach(event => {
+        // Filter events based on the provided criteria
+        const filteredEvents = events.filter(event => {
+            return event.name.toLowerCase().includes(filterCriteria.toLowerCase());
+        });
+
+        // Populate the sidebar with the filtered events
+        filteredEvents.forEach(event => {
             const eventItem = document.createElement('div');
             eventItem.classList.add('event-item');
             eventItem.innerHTML = `
@@ -116,17 +129,30 @@ async function populateSidebar() {
                 <a href="https://ibelong.byui.edu${event.rsvp}" target="_blank">RSVP</a>
                 <p>${event.info}</p>
             `;
-            sidebar.appendChild(eventItem);
+            sidebarContent.appendChild(eventItem);
         });
+
+        // Check if any events matched the filter
+        if (filteredEvents.length === 0) {
+            sidebarContent.innerHTML = '<p>No events match the selected criteria.</p>';
+        }
     } catch (error) {
         console.error('Error fetching events:', error);
     }
 }
 
+export function handleSearch() {
+    const filterCriteria = document.getElementById('searchInput').value;
+    populateSidebar(filterCriteria);
+}
 
 // Helper function to check if an event is happening today
 function isEventToday(eventDate) {
     const today = new Date();
+    console.log(`
+        Today: ${today}
+        Event date: ${eventDate}
+        `);
     return eventDate.toDateString() === today.toDateString();
 }
 
@@ -134,14 +160,19 @@ function isEventToday(eventDate) {
 function isEventThisWeek(eventDate) {
     const today = new Date();
     const endOfWeek = new Date(today);
-    console.log(`
-        Today: ${today}
-        End of the week: ${endOfWeek}
-        `);
     endOfWeek.setDate(today.getDate() + (7 - today.getDay())); // End of the current week (Sunday)
     return eventDate >= today && eventDate <= endOfWeek;
 }
 
 // Call highlightBuildings and populateSidebar when the page loads
 highlightBuildings(); 
-populateSidebar();
+populateSidebar("");
+
+const convertDates = (events) => {
+    return events.map(event => {
+      return {
+        ...event,
+        date: new Date(event.date)  // Convert the date string to a Date object
+      };
+    });
+  };

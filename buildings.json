@@ -103,14 +103,14 @@
     "id": "hart"
   },
   {
-    "name": "Manwaring Center",
+    "name": "BYU-I Center",
     "coordinates": [
       [43.819, -111.7862],
       [43.8179, -111.7862],
       [43.8179, -111.7839],
       [43.819, -111.784]
     ],
-    "id": "manwaring"
+    "id": "center"
   },
   {
     "name": "Mckay Library",
