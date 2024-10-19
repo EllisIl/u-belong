@@ -1,8 +1,36 @@
-header h1 {
-  color: pink;
+/* Mobile / base view */
+:root {
+  --midnight_green: #124E66;
+  --black_olive: #1f271b;
+  --moodlight_gray: #748D92;
+  --french_gray: #D2D7Df;
+  --white: #FFFFFF;
 }
 
 body {
-  background-color: lightblue;
+  background-color: var(--midnight_green);
+}
+body h1 {
+  color: var(--french_gray);
+  text-align: center;
+}
+body a:hover {
+  color: var(--moodlight_gray);
+}
+body header p {
+  color: var(--white);
+  text-align: center;
+}
+body header div {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: var(--french_gray);
+}
+body header div a {
+  color: var(--black_olive);
+}
+body footer p, body footer a {
+  color: var(--white);
 }/*# sourceMappingURL=index.css.map */
-
