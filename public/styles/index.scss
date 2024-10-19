@@ -6,38 +6,60 @@
   --french_gray: #d2d7df;
   --white: #ffffff;
 }
-body {
-  background-color: var(--midnight_green);
-  h1 {
-    color: var(--french_gray);
-    text-align: center;
-  }
-  a:hover {
-    color: var(--moodlight_gray);
-  }
-  header {
-    p {
-      color: var(--white);
-      text-align: center;
+
+/* Mobile view */
+body{
+    background-color: var(--midnight_green);
+    h1{
+        color: var(--french_gray);
+        text-align: center;
     }
-    div {
-      display: flex;
-      justify-content: space-around;
-      padding-top: 20px;
-      padding-bottom: 20px;
-      background-color: var(--french_gray);
-      a {
-        color: var(--black_olive);
-      }
+    a:hoer{
+        color: var(--moodlight_gray)
     }
-  }
-  footer {
-    p,
-    a {
-      color: var(--white);
+    header{
+        p{
+            color: var(--white);
+            text-align: center;
+        }
+        .links{
+            display: flex;
+            justify-content: space-around;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-color: var(--french_gray);
+            display: none;
+            .links.open{
+                display: block;
+            }
+            a{
+                color: var(--black_olive);
+            }
+            
+        }
     }
-  }
+    footer{
+        p, a{
+            color: var(--white);
+            margin: 5px;
+        }
+    }
 }
+
+/* Desktop view */
+@media(min-width:768px){
+    header{
+        button{
+            display: none;
+        }
+        div.links{
+            display: flex;
+        }
+    }
+}
+
+
+
 
 a.leaflet-control-zoom-in,
 a.leaflet-control-zoom-out {
@@ -109,6 +131,11 @@ a.leaflet-control-zoom-out {
 
 /* Media query for responsiveness */
 @media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        align-items: stretch;
+
+    }
   body {
     flex-direction: column;
     align-items: stretch;

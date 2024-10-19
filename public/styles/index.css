@@ -7,6 +7,7 @@
   --white: #ffffff;
 }
 
+/* Mobile view */
 body {
   background-color: var(--midnight_green);
 }
@@ -14,28 +15,42 @@ body h1 {
   color: var(--french_gray);
   text-align: center;
 }
-body a:hover {
+body a:hoer {
   color: var(--moodlight_gray);
 }
 body header p {
   color: var(--white);
   text-align: center;
 }
-body header div {
+body header .links {
   display: flex;
   justify-content: space-around;
   padding-top: 20px;
   padding-bottom: 20px;
   background-color: var(--french_gray);
+  display: none;
 }
-body header div a {
+body header .links .links.open {
+  display: block;
+}
+body header .links a {
   color: var(--black_olive);
 }
 body footer p,
 body footer a {
   color: var(--white);
+  margin: 5px;
 }
 
+/* Desktop view */
+@media (min-width: 768px) {
+  header button {
+    display: none;
+  }
+  header div.links {
+    display: flex;
+  }
+}
 a.leaflet-control-zoom-in,
 a.leaflet-control-zoom-out {
   background-color: var(--midnight_green);
