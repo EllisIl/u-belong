@@ -264,6 +264,82 @@ a.leaflet-control-zoom-out {
   background-color: #1f271b;
 }
 
+#map {
+  height: 900px;
+  width: 100%;
+  flex-grow: 1;
+}
+
+/* Sidebar styles */
+#sidebar {
+  width: 300px;
+  height: 920px;
+  overflow-y: auto;
+  padding: 10px;
+  border-right: 2px solid #ccc;
+  background-color: #f9f9f9;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s;
+  .event-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+}
+
+
+
+.event-item {
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  transition: background-color 0.2s;
+}
+
+.event-item:hover {
+  background-color: #e0e0e0;
+  cursor: pointer;
+}
+
+.highlight {
+  background-color: yellow;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        align-items: stretch;
+
+    }
+  body {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #sidebar {
+    display: none;
+    &.open {
+      display: block;
+      width: 300px;
+      height: 380px; /* Show the sidebar when the open class is added */
+    }
+  }
+
+  #map {
+    height: 400px;
+  }
+}
+
+/* Flex container for sidebar and map */
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%; /* Full height */
+}
 
 
 

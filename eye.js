@@ -25,3 +25,4 @@ eye.addEventListener('click', () => {
         sidebar.style.display = "flex"; // Show the sidebar
     }
 });
+
