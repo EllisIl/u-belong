@@ -6,15 +6,6 @@
     <title>BYU-Idaho Interactive Map</title>
     <link rel="stylesheet" href="/node_modules/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="/styles/index.css" media="screen">
-    <style>
-        #map {
-            height: 600px;
-            width: 100%;
-        }
-        .highlight {
-            background-color: yellow;
-        }
-    </style>
 </head>
 <body>
     <!-- Header -->
@@ -31,7 +22,14 @@
     </header>
     
     <h1>BYU-Idaho Campus Events</h1>
-    <div id="map"></div>
+
+    <!-- Container for Sidebar and Map -->
+    <div class="container">
+        <div id="sidebar">
+            <!-- Sidebar content will be populated here -->
+        </div>
+        <div id="map"></div>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -43,6 +41,6 @@
         <p class="bottom">Map data provided by <a href="https://www.openstreetmap.org/" target="_blank">OpenStreet</a></p>
     </footer>
     <script src="/node_modules/leaflet/dist/leaflet.js"></script>
-    <script src="script.js"></script>
+    <script src="script.mjs" type="module"></script>
 </body>
 </html>
