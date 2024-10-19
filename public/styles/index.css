@@ -61,14 +61,33 @@ body footer p, body footer a {
 }
 
 #eye.open::before {
-  animation: eyeOpen 1s forwards; /* Play the opening animation */
+  -webkit-animation: eyeOpen 1s forwards;
+          animation: eyeOpen 1s forwards; /* Play the opening animation */
 }
 
 #eye.closed::before {
-  animation: eyeClose 1s forwards; /* Play the closing animation */
+  -webkit-animation: eyeClose 1s forwards;
+          animation: eyeClose 1s forwards; /* Play the closing animation */
 }
 
 /* Define the eye opening animation */
+@-webkit-keyframes eyeOpen {
+  0% {
+    background-image: url("../images/eye5_64x64.webp"); /* Fully closed eye */
+  }
+  25% {
+    background-image: url("../images/eye4_64x64.webp"); /* Slightly open eye */
+  }
+  50% {
+    background-image: url("../images/eye3_64x64.webp"); /* Half-open eye */
+  }
+  75% {
+    background-image: url("../images/eye2_64x64.webp"); /* Almost fully open eye */
+  }
+  100% {
+    background-image: url("../images/eye1_64x64.webp"); /* Fully open eye */
+  }
+}
 @keyframes eyeOpen {
   0% {
     background-image: url("../images/eye5_64x64.webp"); /* Fully closed eye */
@@ -87,6 +106,23 @@ body footer p, body footer a {
   }
 }
 /* Define the eye closing animation */
+@-webkit-keyframes eyeClose {
+  0% {
+    background-image: url("../images/eye1_64x64.webp"); /* Fully open eye */
+  }
+  25% {
+    background-image: url("../images/eye2_64x64.webp"); /* Almost fully open eye */
+  }
+  50% {
+    background-image: url("../images/eye3_64x64.webp"); /* Half-open eye */
+  }
+  75% {
+    background-image: url("../images/eye4_64x64.webp"); /* Almost closed eye */
+  }
+  100% {
+    background-image: url("../images/eye5_64x64.webp"); /* Fully closed eye */
+  }
+}
 @keyframes eyeClose {
   0% {
     background-image: url("../images/eye1_64x64.webp"); /* Fully open eye */
