@@ -1,3 +1,5 @@
+import { getEvents } from './utilities.mjs';
+
 // Initialize the map and set the view to BYU-Idaho's coordinates (example coordinates)
 const map = L.map('map').setView([43.8186, -111.7836], 16);
 
@@ -15,8 +17,12 @@ const buildings = [
 
 // Fetch event data from a JSON file and highlight relevant buildings
 async function fetchEvents() {
-    const response = await fetch('events.json');
-    const events = await response.json();
+    const events = await getEvents();
+    events.forEach(element => {
+        if (!element.listingSeparator){
+            console.log(element.p3);
+        }
+    });
     highlightBuildings(events);
 }
 
