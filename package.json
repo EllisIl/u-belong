@@ -4,7 +4,9 @@
   "description": "Interactive map of BYU-Idaho with event highlights",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "predeploy": "npm run build",
+  "deploy": "gh-pages -d build"
   },
   "author": "",
   "license": "ISC",
@@ -13,5 +15,9 @@
     "express": "^4.21.1",
     "leaflet": "^1.9.4",
     "sass": "^1.80.3"
+  },
+  "homepage": "https://github.com/EllisIl/u-belong",
+  "devDependencies": {
+    "gh-pages": "^6.2.0"
   }
 }
