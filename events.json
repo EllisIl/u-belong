@@ -1,5 +1,137 @@
 [
   {
+    "id": "1940593",
+    "name": "Session 2 Sports - Fall 2024",
+    "date": "Sat Oct 19 2024 08:00:00 GMT-0600 (Mountain Daylight Time)",
+    "category": "Sports",
+    "location": "Online Event",
+    "building": "online event",
+    "image": "https://static7.campusgroups.com/upload/byui/2024/r2_image_upload_2467568_Screenshot_20240523_at_90443PM_5232350.png",
+    "rsvp": "/rsvp_boot?id=1940593",
+    "info": "Session 2 Sports - Fall 2024. Sat Oct 19 2024 08:00 AM - 08:00 PM. Online Event."
+  },
+  {
+    "id": "1933252",
+    "name": "Animal Shelter",
+    "date": "Sat Oct 19 2024 10:00:00 GMT-0600 (Mountain Daylight Time)",
+    "category": "Service",
+    "location": "IF Animal Shelter, Off-Campus, Off Campus",
+    "building": "if animal shelter",
+    "image": "https://static7.campusgroups.com/upload/byui/2024/r2_image_upload_3997750_220305_AnimalShelter_002jpg_101512112.jpeg",
+    "rsvp": "/rsvp_boot?id=1933252",
+    "info": "Animal Shelter. Sat Oct 19 2024 10:00 AM - 12:30 PM. IF Animal Shelter, Off-Campus, Off Campus."
+  },
+  {
+    "id": "1939061",
+    "name": "Canoe and Picnic",
+    "date": "Sat Oct 19 2024 10:00:00 GMT-0600 (Mountain Daylight Time)",
+    "category": "Outdoor",
+    "location": "Warm Slough, Off-Campus, Off Campus",
+    "building": "warm slough",
+    "image": "https://static7.campusgroups.com/upload/byui/2023/r2_image_upload_3997750_090911canoetrip013jpg_911155323.jpeg",
+    "rsvp": "/rsvp_boot?id=1939061",
+    "info": "Canoe and Picnic. Sat Oct 19 2024 10:00 AM - 02:00 PM. Warm Slough, Off-Campus, Off Campus."
+  },
+  {
+    "id": "1939649",
+    "name": "Lacrosse",
+    "date": "Sat Oct 19 2024 10:00:00 GMT-0600 (Mountain Daylight Time)",
+    "category": "Sports",
+    "location": "Fields, Sports Complex Fields 5-6",
+    "building": "fields",
+    "image": "https://static7.campusgroups.com/upload/byui/2024/r2_image_upload_3997750_image_upload_3997750_laCrossejpg_417114946_911165437.jpeg",
+    "rsvp": "/rsvp_boot?id=1939649",
+    "info": "Lacrosse. Sat Oct 19 2024 10:00 AM - 12:00 PM. Fields, Sports Complex Fields 5-6."
+  },
+  {
+    "id": "1939678",
+    "name": "Floor Hockey",
+    "date": "Sat Oct 19 2024 10:00:00 GMT-0600 (Mountain Daylight Time)",
+    "category": "Sports",
+    "location": "BYU-Idaho Center, Court 10",
+    "building": "center",
+    "image": "https://static7.campusgroups.com/upload/byui/2024/r2_image_upload_3372089_flyer_image_upload_3997750_floor_hockeyjpg_828121844_328123924.png",
+    "rsvp": "/rsvp_boot?id=1939678",
+    "info": "Floor Hockey. Sat Oct 19 2024 10:00 AM - 12:00 PM. BYU-Idaho Center, Court 10."
+  },
+  {
+    "id": "1940225",
+    "name": "Fitness: Cycling",
+    "date": "Sat Oct 19 2024 10:00:00 GMT-0600 (Mountain Daylight Time)",
+    "category": "Fitness/Wellness",
+    "location": "Hart, 188 Spin Room",
+    "building": "hart",
+    "image": "https://static7.campusgroups.com/upload/byui/2023/r2_image_upload_3997750_221116_CyclingClass_018jpg_714102751.jpeg",
+    "rsvp": "/rsvp_boot?id=1940225",
+    "info": "Fitness: Cycling. Sat Oct 19 2024 10:00 AM - 10:50 AM. Hart, 188 Spin Room."
+  },
+  {
+    "id": "1940321",
+    "name": "Brothers In Art: The Parsons",
+    "date": "Sat Oct 19 2024 10:00:00 GMT-0600 (Mountain Daylight Time)",
+    "category": "Exhibit",
+    "location": "Spori Art Gallery",
+    "building": "spori",
+    "image": "https://static7.campusgroups.com/upload/byui/2024/r2_image_upload_3997750_3d150f7072844c76838b387b30923f6fjpg_924133218.jpeg",
+    "rsvp": "/rsvp_boot?id=1940321",
+    "info": "Brothers In Art: The Parsons. Sat Oct 19 2024 10:00 AM - 11:00 AM. Spori Art Gallery."
+  },
+  {
+    "id": "1938736",
+    "name": "Afternoon Open Registration",
+    "date": "Sat Oct 19 2024 12:00:00 GMT-0600 (Mountain Daylight Time)",
+    "category": "Outdoor",
+    "location": "Ropes Course, Combo of Ropes Course",
+    "building": "ropes course",
+    "image": "https://static7.campusgroups.com/upload/byui/2021/r2_image_1415142_Ropes_Course_Web_Image_9ddcdc79-d4fe-40b5-99e1-98026befd6aa_7118500.jpg",
+    "rsvp": "/rsvp_boot?id=1938736",
+    "info": "Afternoon Open Registration. Sat Oct 19 2024 12:00 PM - 08:00 PM. Ropes Course, Combo of Ropes Course."
+  },
+  {
+    "id": "1938852",
+    "name": "BYU-I Try a Tri TRYathlon",
+    "date": "Sat Oct 19 2024 14:00:00 GMT-0600 (Mountain Daylight Time)",
+    "category": "Fitness/Wellness",
+    "location": "Fields, Stadium Field and Track, Hart, 215 Swimming Pool (combined lanes)",
+    "building": "fields",
+    "image": "https://static7.campusgroups.com/upload/byui/2024/r2_image_upload_3997750_Try_a_Tri_IBelong_Calendar_Ad_S24_1_1_002jpg_517101824.jpeg",
+    "rsvp": "/rsvp_boot?id=1938852",
+    "info": "BYU-I Try a Tri TRYathlon. Sat Oct 19 2024 02:00 PM - 06:00 PM. Fields, Stadium Field and Track, Hart, 215 Swimming Pool (combined lanes)."
+  },
+  {
+    "id": "1939662",
+    "name": "Cricket",
+    "date": "Sat Oct 19 2024 15:00:00 GMT-0600 (Mountain Daylight Time)",
+    "category": "Sports",
+    "location": "Fields, Sports Complex Fields 5-6",
+    "building": "fields",
+    "image": "https://static7.campusgroups.com/upload/byui/2023/r2_image_upload_3997750_cricketjpg_91318145.jpeg",
+    "rsvp": "/rsvp_boot?id=1939662",
+    "info": "Cricket. Sat Oct 19 2024 03:00 PM - 05:30 PM. Fields, Sports Complex Fields 5-6."
+  },
+  {
+    "id": "1938447",
+    "name": "ChoirFest",
+    "date": "Sat Oct 19 2024 16:00:00 GMT-0600 (Mountain Daylight Time)",
+    "category": "Performing/Visual Arts",
+    "location": "Snow, 136 Barrus Concert Hall",
+    "building": "snow",
+    "image": "https://static7.campusgroups.com/upload/byui/2024/r2_image_upload_3997750_Choirfest_IBelong01_10714352.png",
+    "rsvp": "/rsvp_boot?id=1938447",
+    "info": "ChoirFest. Sat Oct 19 2024 04:00 PM - 05:30 PM. Snow, 136 Barrus Concert Hall."
+  },
+  {
+    "id": "1940119",
+    "name": "Table Tennis Tournament",
+    "date": "Sat Oct 19 2024 17:00:00 GMT-0600 (Mountain Daylight Time)",
+    "category": "Sports",
+    "location": "Hart, 161A Wrestling Room",
+    "building": "hart",
+    "image": "https://static7.campusgroups.com/upload/byui/2024/r2_image_upload_3997750_table_tennis_spring_21_jpg_202209151433_101453143.jpeg",
+    "rsvp": "/rsvp_boot?id=1940119",
+    "info": "Table Tennis Tournament. Sat Oct 19 2024 05:00 PM - 07:30 PM. Hart, 161A Wrestling Room."
+  },
+  {
     "id": "1932622",
     "name": "Second Block Classes Begin",
     "date": "2024-10-19T00:00:00Z",
