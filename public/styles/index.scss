@@ -14,7 +14,7 @@ body{
         color: var(--french_gray);
         text-align: center;
     }
-    a:hover{
+    a:hoer{
         color: var(--moodlight_gray)
     }
     header{
@@ -23,12 +23,12 @@ body{
             text-align: center;
         }
         .links{
+            display: flex;
+            justify-content: space-around;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            background-color: var(--french_gray);
             display: none;
-            // display: flex;
-            // justify-content: space-around;
-            // padding-top: 20px;
-            // padding-bottom: 20px;
-            // background-color: var(--french_gray);
             a{
                 color: var(--black_olive);
             }
@@ -44,14 +44,15 @@ body{
 }
 
 /* Desktop view */
-@media(min-width:700px){
+@media(min-width:768px){
     header{
         button{
             display: none;
         }
-        .links{
-            display: block;
+        div.links{
+            display: flex;
         }
+
     }
 }
 
