@@ -98,6 +98,12 @@ a.leaflet-control-zoom-in, a.leaflet-control-zoom-out{
     background-color: #f9f9f9;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     transition: all 0.3s;
+    .event-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 5px;
+    }
 }
 
 .event-item {
@@ -127,9 +133,7 @@ a.leaflet-control-zoom-in, a.leaflet-control-zoom-out{
     }
 
     #sidebar {
-        width: 100%;
-        border-right: none;
-        border-bottom: 2px solid #ccc;
+        display: none;
     }
 
     #map {

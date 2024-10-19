@@ -85,6 +85,13 @@ a.leaflet-control-zoom-in, a.leaflet-control-zoom-out {
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   transition: all 0.3s;
 }
+#sidebar .event-image {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 5px;
+}
 
 .event-item {
   padding: 10px;
@@ -111,9 +118,7 @@ a.leaflet-control-zoom-in, a.leaflet-control-zoom-out {
     align-items: stretch;
   }
   #sidebar {
-    width: 100%;
-    border-right: none;
-    border-bottom: 2px solid #ccc;
+    display: none;
   }
   #map {
     height: 400px;
