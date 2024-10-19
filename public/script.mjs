@@ -116,6 +116,10 @@ export function handleSearch() {
 // Helper function to check if an event is happening today
 function isEventToday(eventDate) {
     const today = new Date();
+    console.log(`
+        Today: ${today}
+        Event date: ${eventDate}
+        `);
     return eventDate.toDateString() === today.toDateString();
 }
 
@@ -123,10 +127,6 @@ function isEventToday(eventDate) {
 function isEventThisWeek(eventDate) {
     const today = new Date();
     const endOfWeek = new Date(today);
-    console.log(`
-        Today: ${today}
-        End of the week: ${endOfWeek}
-        `);
     endOfWeek.setDate(today.getDate() + (7 - today.getDay())); // End of the current week (Sunday)
     return eventDate >= today && eventDate <= endOfWeek;
 }
