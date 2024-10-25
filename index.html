@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <link rel="stylesheet" href="/styles/index.css" media="screen" />
-    <link rel="icon" href="./images/eye2_64x64.webp">
+    <link rel="icon" href="./images/eye2_64x64.webp" />
   </head>
   <body>
     <!-- Header -->
@@ -75,10 +75,9 @@
         <a href="https://www.openstreetmap.org/" target="_blank">OpenStreet</a>
       </p>
     </footer>
-    <script src="/node_modules/leaflet/dist/leaflet.js"></script>
-    <script src="script.mjs" type="module"></script>
+    <script src="script.js" type="module"></script>
     <script type="module">
-        import { handleSearch } from './script.mjs';
+        import { handleSearch } from './script.js';
     
         document.addEventListener('DOMContentLoaded', () => {
             const searchButton = document.getElementById('searchButton');
