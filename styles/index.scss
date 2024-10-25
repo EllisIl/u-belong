@@ -8,40 +8,53 @@
 }
 
 /* Mobile view */
-body{
-    background-color: var(--midnight_green);
-    h1{
-        color: var(--french_gray);
-        text-align: center;
-    }
-    a:hover{
-        color: var(--moodlight_gray)
-    }
-    header{
-        p{
-            color: var(--white);
-            text-align: center;
-        }
-        .links {
-            display: none; /* Initially hide the links */
-            justify-content: space-around;
-            padding-top: 20px;
-            padding-bottom: 20px;
-            background-color: var(--french_gray);
-        }
-        
-        .links.open {
-            display: flex; /* Change to flex to match your layout */
-            flex-direction: column; 
-        }        
-    }
-    footer{
-        p, a{
-            color: var(--white);
-            margin: 5px;
-        }
-    }
+body {
+  background-color: var(--midnight_green);
+
+  h1 {
+      color: var(--french_gray);
+      text-align: center;
+  }
+
+  header {
+      p {
+          color: var(--white);
+          text-align: center;
+      }
+
+      .links {
+          display: none; /* Initially hide the links */
+
+          &.open {
+              display: flex; /* Change to flex to match your layout */
+              flex-direction: column; 
+              align-items: center;
+              background-color: var(--french_gray);
+          }  
+
+          a {
+              color: var(--black_olive);
+              padding: 10px; /* Add padding to increase the clickable area */
+              text-align: center; /* Center text */
+              display: block; /* Make the anchor a block element */
+              width: 100%;
+              text-decoration: none;
+
+              &:hover {
+                  background-color: var(--moodlight_gray); /* Change background on hover */
+              }
+          }
+      }
+  }
+
+  footer {
+      p, a {
+          color: var(--white);
+          margin: 5px;
+      }
+  }
 }
+
 
 #eye {
     margin: auto;
@@ -51,6 +64,7 @@ body{
     align-items: center;
     justify-content: center;
     background-color: var(--midnight_green); /* Added background color */
+    margin-bottom: 10px;
 }
 
 #eye::before {
@@ -116,10 +130,12 @@ body{
 @media(min-width:768px){
     header{
         button{
-            display: none;
+            display: none !important;
         }
-        div.links{
-            display: flex;
+        .links{
+            display: flex !important;
+            flex-direction: row !important;
+            background-color: var(--french_gray);
         }
     }
 }
@@ -177,6 +193,8 @@ a.leaflet-control-zoom-out {
   }
 }
 
+
+
 .event-item {
   padding: 10px;
   margin: 5px 0;
@@ -209,6 +227,11 @@ a.leaflet-control-zoom-out {
 
   #sidebar {
     display: none;
+    &.open {
+      display: block;
+      width: 300px;
+      height: 380px; /* Show the sidebar when the open class is added */
+    }
   }
 
   #map {

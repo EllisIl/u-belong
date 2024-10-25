@@ -242,69 +242,25 @@
     "info": "Cricket. Saturday, 26 October 2024 At 3:00 PM, MDT (GMT-6)."
   },
   {
-    "id": "1940555",
-    "name": "Ucon Elementary Halloween Carnival",
-    "date": "<p style='margin:0;'>Sat, Oct 26, 2024</p><p style='margin:0;'>4:30 PM &ndash; 8 PM</p>",
-    "category": "Service",
-    "location": "Ucon Elementary School",
-    "building": "Ucon Elementary School",
-    "image": "/upload/byui/2023/r2_image_upload_1415978_Volunteers_Needed_3_002_12317124.png",
-    "rsvp": "/rsvp_boot?id=1940555",
-    "info": "Ucon Elementary Halloween Carnival. Saturday, 26 October 2024 At 4:30 PM, MDT (GMT-6)."
-  },
-  {
-    "id": "1939617",
-    "name": "Jiu Jitsu",
-    "date": "<p style='margin:0;'>Sat, Oct 26, 2024</p><p style='margin:0;'>5 PM &ndash; 7 PM</p>",
-    "category": "Sports",
-    "location": "Hart, 187 Practice Room",
-    "building": "Hart",
-    "image": "/upload/byui/2024/r2_image_upload_2334014_180215_JiuJitsu_012jpg_422124428.jpeg",
-    "rsvp": "/rsvp_boot?id=1939617",
-    "info": "Jiu Jitsu. Saturday, 26 October 2024 At 5:00 PM, MDT (GMT-6)."
-  },
-  {
-    "id": "1932873",
-    "name": "Roller Skating",
-    "date": "<p style='margin:0;'>Sat, Oct 26, 2024</p><p style='margin:0;'>6:30 PM &ndash; 8 PM</p>",
-    "category": "Student Events/Activities",
-    "location": "Manwaring Center, 220 Grand Ballroom",
-    "building": "Manwaring Center",
-    "image": "/upload/byui/2021/r2_image_upload_1350379_EventPhoto_121143917.jpeg",
-    "rsvp": "/rsvp_boot?id=1932873",
-    "info": "Roller Skating. Saturday, 26 October 2024 At 6:30 PM, MDT (GMT-6)."
-  },
-  {
-    "id": "1934289",
-    "name": "Fencing Class",
-    "date": "<p style='margin:0;'>Sat, Oct 26, 2024</p><p style='margin:0;'>7 PM &ndash; 9 PM</p>",
-    "category": "Sports",
-    "location": "Hart, 234 Fitness Studio",
-    "building": "Hart",
-    "image": "/upload/byui/2023/r2_image_upload_1428306_flyer_image_upload_2505679_fencing_15151613_16141938_111421226.png",
-    "rsvp": "/rsvp_boot?id=1934289",
-    "info": "Fencing Class. Saturday, 26 October 2024 At 7:00 PM, MDT (GMT-6)."
-  },
-  {
-    "id": "1938882",
-    "name": "Comic Frenzy - Fall 2024",
-    "date": "<p style='margin:0;'>Sat, Oct 26, 2024</p><p style='margin:0;'>7 PM &ndash; 8:30 PM</p>",
+    "id": "1938447",
+    "name": "ChoirFest",
+    "date": "Sat Oct 19 2024 16:00:00 GMT-0600 (Mountain Daylight Time)",
     "category": "Performing/Visual Arts",
-    "location": "Snow, 105 Lab",
-    "building": "Snow",
-    "image": "/upload/byui/2024/r2_image_upload_3997750_comic_frenzy_jpg_924165355.jpeg",
-    "rsvp": "/rsvp_boot?id=1938882",
-    "info": "Comic Frenzy - Fall 2024. Saturday, 26 October 2024 At 7:00 PM, MDT (GMT-6)."
+    "location": "Snow, 136 Barrus Concert Hall",
+    "building": "snow",
+    "image": "https://static7.campusgroups.com/upload/byui/2024/r2_image_upload_3997750_Choirfest_IBelong01_10714352.png",
+    "rsvp": "/rsvp_boot?id=1938447",
+    "info": "ChoirFest. Sat Oct 19 2024 04:00 PM - 05:30 PM. Snow, 136 Barrus Concert Hall."
   },
   {
-    "id": "1940348",
-    "name": "Dance the Night Away with Sound Alliance And Vocal Union",
-    "date": "<p style='margin:0;'>Sat, Oct 26, 2024</p><p style='margin:0;'>8 PM &ndash; 11 PM</p>",
-    "category": "Meeting, w/service orders",
-    "location": "Hart, 250 Auditorium (gym/stage combo)",
-    "building": "Hart",
-    "image": "/upload/byui/2024/r2_image_upload_3997750_Masquerade_Ball_IBelong_1018132639.png",
-    "rsvp": "/rsvp_boot?id=1940348",
-    "info": "Dance the Night Away with Sound Alliance And Vocal Union. Saturday, 26 October 2024 At 8:00 PM, MDT (GMT-6)."
+    "id": "1940119",
+    "name": "Table Tennis Tournament",
+    "date": "Sat Oct 19 2024 17:00:00 GMT-0600 (Mountain Daylight Time)",
+    "category": "Sports",
+    "location": "Hart, 161A Wrestling Room",
+    "building": "hart",
+    "image": "https://static7.campusgroups.com/upload/byui/2024/r2_image_upload_3997750_table_tennis_spring_21_jpg_202209151433_101453143.jpeg",
+    "rsvp": "/rsvp_boot?id=1940119",
+    "info": "Table Tennis Tournament. Sat Oct 19 2024 05:00 PM - 07:30 PM. Hart, 161A Wrestling Room."
   }
 ]
