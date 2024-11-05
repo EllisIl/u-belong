@@ -16,37 +16,6 @@ body {
       text-align: center;
   }
 
-  header {
-      p {
-          color: var(--white);
-          text-align: center;
-      }
-
-      .links {
-          display: none; /* Initially hide the links */
-
-          &.open {
-              display: flex; /* Change to flex to match your layout */
-              flex-direction: column; 
-              align-items: center;
-              background-color: var(--french_gray);
-          }  
-
-          a {
-              color: var(--black_olive);
-              padding: 10px; /* Add padding to increase the clickable area */
-              text-align: center; /* Center text */
-              display: block; /* Make the anchor a block element */
-              width: 100%;
-              text-decoration: none;
-
-              &:hover {
-                  background-color: var(--moodlight_gray); /* Change background on hover */
-              }
-          }
-      }
-  }
-
   footer {
       p, a {
           color: var(--white);
@@ -78,69 +47,6 @@ body {
     justify-content: center;
     transition: background-image 0.5s ease-in-out; /* Smooth transition between images */
 }
-
-#eye.open::before {
-    animation: eyeOpen 1s forwards; /* Play the opening animation */
-}
-
-#eye.closed::before {
-    animation: eyeClose 1s forwards; /* Play the closing animation */
-}
-
-/* Define the eye opening animation */
-@keyframes eyeOpen {
-    0% {
-        background-image: url('../images/eye5_64x64.webp'); /* Fully closed eye */
-    }
-    25% {
-        background-image: url('../images/eye4_64x64.webp'); /* Slightly open eye */
-    }
-    50% {
-        background-image: url('../images/eye3_64x64.webp'); /* Half-open eye */
-    }
-    75% {
-        background-image: url('../images/eye2_64x64.webp'); /* Almost fully open eye */
-    }
-    100% {
-        background-image: url('../images/eye1_64x64.webp'); /* Fully open eye */
-    }
-}
-
-/* Define the eye closing animation */
-@keyframes eyeClose {
-    0% {
-        background-image: url('../images/eye1_64x64.webp'); /* Fully open eye */
-    }
-    25% {
-        background-image: url('../images/eye2_64x64.webp'); /* Almost fully open eye */
-    }
-    50% {
-        background-image: url('../images/eye3_64x64.webp'); /* Half-open eye */
-    }
-    75% {
-        background-image: url('../images/eye4_64x64.webp'); /* Almost closed eye */
-    }
-    100% {
-        background-image: url('../images/eye5_64x64.webp'); /* Fully closed eye */
-    }
-}
-
-
-/* Desktop view */
-@media(min-width:768px){
-    header{
-        button{
-            display: none !important;
-        }
-        .links{
-            display: flex !important;
-            flex-direction: row !important;
-            background-color: var(--french_gray);
-        }
-    }
-}
-
-
 
 
 a.leaflet-control-zoom-in,
@@ -177,7 +83,7 @@ a.leaflet-control-zoom-out {
 
 /* Sidebar styles */
 #sidebar {
-  width: 300px;
+  width: 30%;
   height: 920px;
   overflow-y: auto;
   padding: 10px;
@@ -237,6 +143,10 @@ a.leaflet-control-zoom-out {
   #map {
     height: 400px;
   }
+}
+input #searchInput {
+  width: 100%; 
+  margin-bottom: 10px
 }
 
 /* Flex container for sidebar and map */
