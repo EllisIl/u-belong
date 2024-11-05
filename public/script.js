@@ -135,7 +135,7 @@ async function populateSidebar() {
 
 async function getEvents() {
   try {
-    const response = await fetch('http://localhost:3000/api/events');
+    const response = await fetch('https://u-belong.onrender.com/api/');
     if (!response.ok) throw new Error(`Failed to fetch events: ${response.statusText}`);
     
     const eventsData = await response.json();
