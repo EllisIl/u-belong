@@ -1,4 +1,3 @@
-/* Mobile / base view */
 :root {
   --midnight_green: #124e66;
   --black_olive: #1f271b;
@@ -7,9 +6,9 @@
   --white: #ffffff;
 }
 
-/* Mobile view */
 body {
   background-color: var(--midnight_green);
+  height: 100vh;
 }
 body h1 {
   color: var(--french_gray);
@@ -18,29 +17,6 @@ body h1 {
 body footer p, body footer a {
   color: var(--white);
   margin: 5px;
-}
-
-#eye {
-  margin: auto;
-  width: 86px;
-  height: 68px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--midnight_green); /* Added background color */
-  margin-bottom: 10px;
-}
-
-#eye::before {
-  content: "";
-  background-image: url("../images/eye5_64x64.webp"); /* Default closed eye */
-  background-size: cover;
-  width: 68px;
-  height: 68px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-image 0.5s ease-in-out; /* Smooth transition between images */
 }
 
 a.leaflet-control-zoom-in,
@@ -71,7 +47,7 @@ a.leaflet-control-zoom-out {
 }
 
 #map {
-  height: 900px;
+  height: 100%;
   width: 100%;
   flex-grow: 1;
 }
@@ -79,7 +55,7 @@ a.leaflet-control-zoom-out {
 /* Sidebar styles */
 #sidebar {
   width: 30%;
-  height: 920px;
+  height: 987;
   overflow-y: auto;
   padding: 10px;
   border-right: 2px solid #ccc;
@@ -93,6 +69,13 @@ a.leaflet-control-zoom-out {
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 5px;
+}
+#sidebar h1 {
+  color: var(--black_olive);
+}
+
+footer {
+  height: 5%;
 }
 
 .event-item {
@@ -132,7 +115,7 @@ a.leaflet-control-zoom-out {
     height: 380px; /* Show the sidebar when the open class is added */
   }
   #map {
-    height: 400px;
+    height: 100%;
   }
 }
 input #searchInput {
@@ -144,5 +127,5 @@ input #searchInput {
 .container {
   display: flex;
   width: 100%;
-  height: 100%; /* Full height */
+  height: 85%; /* Full height */
 }/*# sourceMappingURL=index.css.map */

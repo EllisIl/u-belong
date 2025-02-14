@@ -4,6 +4,7 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
   attribution: "&copy; OpenStreetMap contributors",
 }).addTo(map);
 
+
 async function fetchData(file) {
   try {
     const response = await fetch(file);
@@ -19,8 +20,13 @@ let events = [];
 let buildings = [];
 let popup;
 
+const searchButton = document.getElementById('searchButton');
+const searchInput = document.getElementById('searchInput');
+
+searchButton.addEventListener('click', handleSearch);
+
 export function handleSearch() {
-  const filterCriteria = document.getElementById("searchInput").value;
+  const filterCriteria = searchInput.value;
   populateSidebar(filterCriteria);
 }
 
@@ -29,7 +35,7 @@ async function highlightBuildings() {
   buildings = await fetchData("buildings.json");
 
   buildings.forEach((building) => {
-    const buildingEvents = events.filter((event) => event.building === building.id);
+    const buildingEvents = events.filter((event) => event.building === building.name);
 
     const polygonStyle = {
       color: "#1F271B",
@@ -109,29 +115,35 @@ function getEventDetailsHTML(events) {
   `).join("<hr>") || "No events available";
 }
 
-async function populateSidebar() {
+async function populateSidebar(filterCriteria = "") {
   try {
     const eventList = await getEvents();
-    const sidebar = document.getElementById("sidebar");
+    const sidebar = document.getElementById("sidebarContent");
+    sidebar.innerHTML = ""; // Clear previous results
 
-    eventList.forEach((event) => {
-      const eventItem = document.createElement("div");
-      eventItem.classList.add("event-item");
-      eventItem.innerHTML = `
-        <img class="event-image" src="https://static7.campusgroups.com${event.image}" alt="${event.name}">
-        <h3>${event.name}</h3>
-        <p>${event.date}</p>
-        <p>${event.category}</p>
-        <p>${event.building}</p>
-        <a href="https://ibelong.byui.edu${event.rsvp}" target="_blank">RSVP</a>
-        <p>${event.info}</p>
-      `;
-      sidebar.appendChild(eventItem);
-    });
+    eventList
+      .filter((event) =>
+        event.name.toLowerCase().includes(filterCriteria.toLowerCase())
+      )
+      .forEach((event) => {
+        const eventItem = document.createElement("div");
+        eventItem.classList.add("event-item");
+        eventItem.innerHTML = `
+          <img class="event-image" src="https://static7.campusgroups.com${event.image}" alt="${event.name}">
+          <h3>${event.name}</h3>
+          <p>${event.date}</p>
+          <p>${event.category}</p>
+          <p>${event.building}</p>
+          <a href="https://ibelong.byui.edu${event.rsvp}" target="_blank">RSVP</a>
+          <p>${event.info}</p>
+        `;
+        sidebar.appendChild(eventItem);
+      });
   } catch (error) {
     console.error("Error fetching events:", error);
   }
 }
+
 
 async function getEvents() {
   try {
@@ -168,7 +180,6 @@ async function getEvents() {
     return [];
   }
 }
-
 
 highlightBuildings();
 populateSidebar();
