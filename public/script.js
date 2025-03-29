@@ -83,7 +83,7 @@ function showPopup(polygon, latlng) {
   const eventDetails = getEventDetailsHTML(limitedEvents);
 
   const viewMoreButton = buildingEvents.length > 3
-    ? `<button onclick="showAllEvents('${building.id}', {lat: ${latlng.lat}, lng: ${latlng.lng}})">View More</button>`
+    ? `<button onclick="showAllEvents('${building.name}', {lat: ${latlng.lat}, lng: ${latlng.lng}})">View More</button>`
     : "";
 
   const content = `${building.name}<br>${eventDetails}<br>${viewMoreButton}`;
@@ -93,7 +93,8 @@ function showPopup(polygon, latlng) {
 }
 
 window.showAllEvents = function (buildingId, latlng) {
-  const building = buildings.find((b) => b.id === buildingId);
+  const building = buildings.find((b) => b.name === buildingId);
+  console.log(buildingId)
   const buildingEvents = events.filter((e) => e.building === buildingId);
 
   if (buildingEvents.length === 0) {
